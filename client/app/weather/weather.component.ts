@@ -63,7 +63,7 @@ export class WeatherComponent {
 
 
   private getData(data) {
-    this.images = data.images;
+    this.images = data.image;
   }
 
 }
