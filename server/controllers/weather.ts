@@ -1,17 +1,18 @@
 import * as weather from 'openweathermap-js';
-
+let api_key = '7ce20399c4214442464480835e10863a'; // TODO: replace this for a env var
 
 export default class WeatherCtrl {
 
-
-
   byName = (req, res) => {
 
-    let city = req.query.name;
+     if(!req.query.name) {
+      return res.status(400).json({error: 'there is no city to search'});
+    }
 
+    let city = decodeURIComponent(req.query.name);
 
     weather.defaults({
-      appid: '7ce20399c4214442464480835e10863a',
+      appid: api_key,
       method: 'name',
       location: city,
       format: 'JSON',
@@ -20,10 +21,11 @@ export default class WeatherCtrl {
     });
 
     weather.current(function(err, data) {
-      if (!err)
+      if (!err) {
         res.status(200).json(data);
-      else
-        console.error(err.message);
+      } else {
+        res.status(404).json(err);
+      }
     });
 
   }
