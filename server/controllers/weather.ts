@@ -99,6 +99,13 @@ export default class WeatherCtrl {
           weather: data
         };
 
+        if(data.body) {
+          let body = JSON.parse(data.body);
+          if(body.cod === '404') {
+            return res.status(404).json({message: 'something goes wrong', error: data});
+          }
+        }
+
         // search images from the place to set it as background
         this.images.search(data.name + ' ' + data.sys.country, {size: 'large', safe: 'high', type: 'photo'}).then(image => {
           response.image = image.splice(0, 3);
