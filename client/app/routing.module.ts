@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
+import { WeatherComponent } from './weather/weather.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent },
+  { path: ':city', component: WeatherComponent },
   { path: 'notfound', component: NotFoundComponent },
-  { path: '**', redirectTo: '/notfound' },
+  { path: '**', redirectTo: '/current' },
 ];
 
 @NgModule({
