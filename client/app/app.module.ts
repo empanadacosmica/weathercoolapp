@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './services/weather.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    LazyLoadImageModule
   ],
   providers: [
     WeatherService

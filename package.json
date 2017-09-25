@@ -47,6 +47,7 @@
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.0.1",
     "morgan": "^1.8.2",
+    "ng-lazyload-image": "^3.3.2",
     "nodemon": "1.11.0",
     "openweathermap-js": "github:empanadacosmica/openweathermap-js",
     "protractor": "~5.1.2",
