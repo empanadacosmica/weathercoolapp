@@ -9,8 +9,12 @@ export class WeatherService {
 
   constructor(private http: Http) { }
 
-  getWeather(): Observable<any> {
-    return this.http.get('/api/weather').map(res => res.json());
+  getByCity(city: string): Observable<any> {
+    return this.http.get('/api/city?name=' + encodeURIComponent(city)).map(res => res.json());
+  }
+
+  getByCoord(latitude: any, longitude: any): Observable<any> {
+    return this.http.get('/api/coord?latitude=' + encodeURIComponent(latitude) + '&longitude=' + encodeURIComponent(longitude)).map(res => res.json());
   }
 
 }
