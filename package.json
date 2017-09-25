@@ -47,7 +47,7 @@
     "jsonwebtoken": "^8.0.1",
     "morgan": "^1.8.2",
     "nodemon": "1.11.0",
-    "openweathermap-js": "^1.0.1",
+    "openweathermap-js": "github:empanadacosmica/openweathermap-js",
     "protractor": "~5.1.2",
     "rxjs": "^5.4.2",
     "tether": "1.4.0",
