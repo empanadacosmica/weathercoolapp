@@ -40,4 +40,30 @@ export default class WeatherCtrl {
 
   }
 
+  /**
+   * Check Weather by coord
+   * @param req
+   * @param res
+   * @returns {Promise<*>|JSON}
+   */
+  byCoord = (req, res) => {
+
+    if(!req.query.latitude && !req.query.longitude) {
+      return res.status(400).json({error: 'there is no coord valid to search'});
+    }
+
+    let latitude = decodeURIComponent(req.query.latitude);
+    let longitude = decodeURIComponent(req.query.longitude);
+
+
+    weather.current({method: 'coord', coord: {lat: latitude, lon: longitude}}, function(err, data) {
+      if (!err) {
+        res.status(200).json(data);
+      } else {
+        res.status(404).json(err);
+      }
+    });
+
+  }
+
 }
