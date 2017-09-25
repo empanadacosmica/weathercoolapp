@@ -30,12 +30,13 @@ export class WeatherComponent {
              */
 
           }, error => {
-            self.router.navigateByUrl('/notfound');
+            self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
           });
 
         }, error => {
           if (error.code == error.PERMISSION_DENIED) {
-            self.router.navigateByUrl('/notfound');
+            self.router.navigate(['notfound']);
+
             console.log('you denied me :-(');
           }
         });
@@ -49,7 +50,7 @@ export class WeatherComponent {
            */
 
         }, err => {
-          self.router.navigateByUrl('/notfound');
+          self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
         });
       }
     });
