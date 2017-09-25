@@ -43,6 +43,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",
+    "google-images": "^2.1.0",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.0.1",
     "morgan": "^1.8.2",
