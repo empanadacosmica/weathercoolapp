@@ -7,7 +7,7 @@ export default function setRoutes(app) {
 
   const weatherCtrl = new WeatherCtrl();
 
-  router.route('/weather').get(weatherCtrl.test);
+  router.route('/city').get(weatherCtrl.byName);
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);
