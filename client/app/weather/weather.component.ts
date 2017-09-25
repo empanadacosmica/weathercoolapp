@@ -10,7 +10,10 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class WeatherComponent {
 
-  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router) { }
+  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router) {
+  }
+
+  images: any = [];
 
   ngOnInit(){
 
@@ -29,6 +32,7 @@ export class WeatherComponent {
              * Happy path for GEOPOS
              */
 
+            this.getData(data);
           }, error => {
             self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
           });
@@ -36,7 +40,6 @@ export class WeatherComponent {
         }, error => {
           if (error.code == error.PERMISSION_DENIED) {
             self.router.navigate(['notfound']);
-
             console.log('you denied me :-(');
           }
         });
@@ -48,6 +51,7 @@ export class WeatherComponent {
           /**
            * Happy path for city name
            */
+          this.getData(data);
 
         }, err => {
           self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
@@ -57,5 +61,9 @@ export class WeatherComponent {
 
   }
 
+
+  private getData(data) {
+    this.images = data.images;
+  }
 
 }

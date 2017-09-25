@@ -1,6 +1,4 @@
 import * as weather from 'openweathermap-js';
-
-
 import * as GoogleImages from 'google-images';
 
 
@@ -13,7 +11,7 @@ export default class WeatherCtrl {
   constructor() {
 
     let google = '014732945328213571568:nxikwjlukmk';
-    let credential = 'AIzaSyAMhBc7GauRAgmGTYYXIVWqk4D-2hc-zIg';
+    let credential = 'AIzaSyA45hNDlmuMHhqJ37WyHEnXqm8TO47aVSY';
 
     this.images = new GoogleImages(google, credential);
 
@@ -100,8 +98,10 @@ export default class WeatherCtrl {
         };
 
         if(data.body) {
+
+
           let body = JSON.parse(data.body);
-          if(body.cod === '404') {
+          if(body && body.cod === '404') {
             return res.status(404).json({message: 'something goes wrong', error: data});
           }
         }
