@@ -5,7 +5,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'notfound', component: NotFoundComponent },
+  { path: 'search', component: NotFoundComponent },
   { path: ':city', component: WeatherComponent },
   { path: '**', redirectTo: 'current' },
 
