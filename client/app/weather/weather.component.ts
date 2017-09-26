@@ -35,24 +35,33 @@ export class WeatherComponent {
       if(self.city === 'current' && navigator.geolocation) {
         self.city = undefined;
         //if it's a current param, use the GEOPOS loc
-        navigator.geolocation.getCurrentPosition(position => {
-          self.weather.getByCoord(position.coords.latitude, position.coords.longitude).subscribe((data) =>{
 
-            /**
-             * Happy path for GEOPOS
-             */
+        if ('geolocation' in navigator) {
 
-            this.getData(data);
+
+          navigator.geolocation.getCurrentPosition(position => {
+            self.weather.getByCoord(position.coords.latitude, position.coords.longitude).subscribe((data) => {
+
+              /**
+               * Happy path for GEOPOS
+               */
+
+              this.getData(data);
+            }, error => {
+              self.router.navigate(['notfound'], {queryParams: {error: 'notfound'}});
+            });
+
           }, error => {
-            self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
+            if (error.code == error.PERMISSION_DENIED) {
+              self.router.navigate(['notfound'], {queryParams: {error: 'notgeopos'}});
+              console.log('you denied me :-(');
+            }
           });
 
-        }, error => {
-          if (error.code == error.PERMISSION_DENIED) {
-            self.router.navigate(['notfound'], { queryParams: { error: 'notgeopos' } });
-            console.log('you denied me :-(');
-          }
-        });
+        } else {
+          self.router.navigate(['notfound']);
+        }
+
       } else {
 
         //If it's not a current param, should use and search it as a city name
