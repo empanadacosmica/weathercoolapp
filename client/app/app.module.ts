@@ -6,6 +6,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './services/weather.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
   imports: [
     RoutingModule,
     SharedModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     WeatherService
