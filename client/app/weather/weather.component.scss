@@ -26,69 +26,6 @@ $blur-factor: 0.5rem;
   }
 }
 
-@keyframes ftra-in {
-  0% {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    -ms-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.7;
-    -webkit-filter: blur($blur-factor);
-    -moz-filter: blur($blur-factor);
-    -o-filter: blur($blur-factor);
-    -ms-filter: blur($blur-factor);
-    filter: blur($blur-factor);
-  }
-}
-
-
-.search-box {
-
-  display: inline-block;
-  background: rgba(black, 0.5);
-  border: 1px solid rgba(white, 0.5) !important;
-  position: relative;
-  input {
-    -webkit-box-shadow: 0 0 0px 0px transparent inset;
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-
-      color: white !important;
-      transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
-
-    }
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    overflow: hidden;
-    padding: 0.5rem 1rem;
-    border:0px solid transparent !important;
-    background: transparent !important;
-    font-size: 1.6rem;
-    line-height: 1.6rem;
-    color: white;
-    padding-right: 3.5rem;
-  }
-
-  button {
-    cursor: pointer;
-    position: absolute;
-    height: 100%;
-    width: 3rem;
-    right: 0;
-    top: 0;
-    padding: 0.5rem;
-    background: transparent !important;
-    border:0px solid transparent !important;
-  }
-}
 
 .bg-wrapper {
   position: absolute;
@@ -152,14 +89,25 @@ $blur-factor: 0.5rem;
 }
 
 .weather-container {
+  box-shadow: 0px 0px 10px rgba(white, 0.5);
   position: relative;
   color: white;
   padding: 1rem ;
   height: 60%;
+  min-height: 15rem;
   min-width: 20vw;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid rgba(white, 0.75);
-  background: rgba(black, 0.5);
+  background: rgba(black, 0.6);
+  &.weather-container--grey {
+    background: rgba(black, 0.4);
+    box-shadow: 0px 0px 10px rgba(black, 0.4);
+  }
+  &.weather-container--white {
+    background: rgba(grey, 0.3);
+    box-shadow: 0px 0px 10px rgba(black, 0.3);
+
+  }
   & + .weather-container {
     margin-left: 1rem;
   }
