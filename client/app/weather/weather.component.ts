@@ -45,6 +45,7 @@ export class WeatherComponent {
                * Happy path for GEOPOS
                */
               this.getData(data);
+              self.location.go( self.city );
             }, error => {
               self.router.navigate(['notfound'], {queryParams: {error: 'notfound'}});
             });
