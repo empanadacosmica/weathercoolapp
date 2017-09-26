@@ -13,7 +13,9 @@ export class WeatherComponent {
   constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router) {
   }
 
-  images: any = [];
+  images: any = [{}, {}, {}];
+  loading: boolean = false;
+  loadingImage: boolean = false;
 
   ngOnInit(){
 
@@ -64,6 +66,13 @@ export class WeatherComponent {
 
   private getData(data) {
     this.images = data.image;
+    this.loading = true;
+  }
+
+  showImage (succcess: boolean) {
+    if(succcess) {
+      this.loadingImage = true;
+    }
   }
 
 }
