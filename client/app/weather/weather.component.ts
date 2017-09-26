@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Location} from '@angular/common';
+
 
 
 @Component({
@@ -10,12 +12,14 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class WeatherComponent {
 
-  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router) {
+  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router, private location: Location) {
   }
 
   images: any = [{}, {}, {}];
-  loading: boolean = false;
-  loadingImage: boolean = false;
+  loading: boolean = true;
+  loadingImage: boolean = true;
+  currentWeather: any;
+  city: string;
 
   ngOnInit(){
 
@@ -23,9 +27,12 @@ export class WeatherComponent {
 
     self.activatedRoute.params.subscribe((params: Params) => {
       //save param name
-      let cityURL = decodeURIComponent(params['city']);
+      if(params['city']) {
+        self.city = decodeURIComponent(params['city']);
+      }
 
-      if(cityURL === 'current' && navigator.geolocation){
+      if(self.city === 'current' && navigator.geolocation) {
+        self.city = undefined;
         //if it's a current param, use the GEOPOS loc
         navigator.geolocation.getCurrentPosition(position => {
           self.weather.getByCoord(position.coords.latitude, position.coords.longitude).subscribe((data) =>{
@@ -36,19 +43,19 @@ export class WeatherComponent {
 
             this.getData(data);
           }, error => {
-            self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
+            self.router.navigate(['search'], { queryParams: { error: 'search' } });
           });
 
         }, error => {
           if (error.code == error.PERMISSION_DENIED) {
-            self.router.navigate(['notfound']);
+            self.router.navigate(['search']);
             console.log('you denied me :-(');
           }
         });
       } else {
 
         //If it's not a current param, should use and search it as a city name
-        self.weather.getByCity(cityURL).subscribe((data) =>{
+        self.weather.getByCity(self.city).subscribe((data) =>{
 
           /**
            * Happy path for city name
@@ -56,7 +63,7 @@ export class WeatherComponent {
           this.getData(data);
 
         }, err => {
-          self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
+          self.router.navigate(['search'], { queryParams: { error: 'search' } });
         });
       }
     });
@@ -66,13 +73,34 @@ export class WeatherComponent {
 
   private getData(data) {
     this.images = data.image;
-    this.loading = true;
+    this.loading = false;
+    this.currentWeather = data.weather;
+    this.city = this.currentWeather.name;
   }
 
   showImage (succcess: boolean) {
     if(succcess) {
-      this.loadingImage = true;
+      this.loadingImage = false;
     }
+  }
+
+  search () {
+    let self = this;
+    self.loading = true;
+    self.loadingImage = true;
+
+    self.weather.getByCity(self.city).subscribe((data) =>{
+
+      /**
+       * Happy path for city name
+       */
+      self.getData(data);
+
+      self.location.go( self.city );
+
+    }, err => {
+      self.router.navigate(['search'], { queryParams: { error: 'search' } });
+    });
   }
 
 }
