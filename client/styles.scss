@@ -152,6 +152,10 @@ body {
   position: absolute;
   bottom: 0rem;
   left: 1rem;
+  a , span {
+    text-shadow: 0px 0px 0px white;
+    color: white !important;
+  }
 }
 
 .align-center {
