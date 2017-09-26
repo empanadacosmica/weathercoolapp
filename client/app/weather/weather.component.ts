@@ -43,12 +43,12 @@ export class WeatherComponent {
 
             this.getData(data);
           }, error => {
-            self.router.navigate(['search'], { queryParams: { error: 'search' } });
+            self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
           });
 
         }, error => {
           if (error.code == error.PERMISSION_DENIED) {
-            self.router.navigate(['search']);
+            self.router.navigate(['notfound'], { queryParams: { error: 'notgeopos' } });
             console.log('you denied me :-(');
           }
         });
@@ -63,7 +63,7 @@ export class WeatherComponent {
           this.getData(data);
 
         }, err => {
-          self.router.navigate(['search'], { queryParams: { error: 'search' } });
+          self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
         });
       }
     });
@@ -99,7 +99,7 @@ export class WeatherComponent {
       self.location.go( self.city );
 
     }, err => {
-      self.router.navigate(['search'], { queryParams: { error: 'search' } });
+      self.router.navigate(['notfound'], { queryParams: { error: 'notfound' } });
     });
   }
 
