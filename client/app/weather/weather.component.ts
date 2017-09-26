@@ -19,6 +19,7 @@ export class WeatherComponent {
   loading: boolean = true;
   loadingImage: boolean = true;
   currentWeather: any;
+  forecast: any;
   city: string;
 
   ngOnInit(){
@@ -72,8 +73,9 @@ export class WeatherComponent {
 
 
   private getData(data) {
-    this.images = data.image;
+    this.images = data.images ? data.images : [{}, {}, {}];
     this.loading = false;
+    this.forecast = data.forecast;
     this.currentWeather = data.weather;
     this.city = this.currentWeather.name;
   }
