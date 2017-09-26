@@ -41,11 +41,9 @@ export class WeatherComponent {
 
           navigator.geolocation.getCurrentPosition(position => {
             self.weather.getByCoord(position.coords.latitude, position.coords.longitude).subscribe((data) => {
-
               /**
                * Happy path for GEOPOS
                */
-
               this.getData(data);
             }, error => {
               self.router.navigate(['notfound'], {queryParams: {error: 'notfound'}});
@@ -56,7 +54,7 @@ export class WeatherComponent {
               self.router.navigate(['notfound'], {queryParams: {error: 'notgeopos'}});
               console.log('you denied me :-(');
             }
-          });
+          },  { maximumAge: 600000, timeout: 10000 });
 
         } else {
           self.router.navigate(['notfound']);
