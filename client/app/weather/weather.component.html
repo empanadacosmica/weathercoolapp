@@ -11,6 +11,25 @@
 <h1 class="hero">Weather Cool App</h1>
 
 <div class="content">
+
+
+  <div class="weather">
+    <article class="weather-container">
+      <div class="weather-date">Now</div>
+      <div class="weather-place">{{currentWeather.name}}</div>
+      <p class="weather-description">{{currentWeather.weather[0].description}}</p>
+
+      <div class="temps">
+        <ul class="max-min-temps">
+          <li>min<span>{{currentWeather.main.temp_min}}º</span></li>
+          <li>max<span>{{currentWeather.main.temp_max}}º</span></li>
+        </ul>
+        <h2 class="main-temp">{{currentWeather.main.temp | number: '1.0-0'}}º</h2>
+      </div>
+    </article>
+  </div>
+
+
   <form class="search-box" (ngSubmit)="search()">
     <input  [(ngModel)]="city" name="city" placeholder="City" >
     <button type="submit" ><span class="fa fa-2x fa-search"></span></button>
