@@ -1,3 +1,21 @@
 <div>
-  <h4>Hola miguel</h4>
+
+
+  <div class="bg-wrapper">
+    <div class="transparent" [ngClass]="{'blur-bg': loadingImage}" (onLoad)="showImage($event)" [lazyLoad]="images[0].url" ></div>
+  </div>
+
+
+
+  <div class="spinner" [ngClass] = "{'spinner--hide': loading}">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+
+</div>
+
+
+<div class="content">
+  <h1 class="hero">Cool Weather App</h1>
+
 </div>
