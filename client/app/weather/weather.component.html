@@ -28,15 +28,15 @@
     </article>
     <article class="weather-container weather-container--grey">
       <div class="weather-content" [ngClass]="{'show-content': !loading}" *ngIf="currentWeather">
-        <div class="weather-date">Now</div>
+        <div class="weather-date">{{forecast[0].date}}</div>
         <div class="weather-place">{{currentWeather.name}}</div>
-        <p class="weather-description">{{currentWeather.weather[0].description}}</p>
+        <p class="weather-description">{{forecast[0].description}}</p>
         <div class="temps">
           <ul class="max-min-temps">
-            <li>min<span>{{currentWeather.main.temp_min}}º</span></li>
-            <li>max<span>{{currentWeather.main.temp_max}}º</span></li>
+            <li>min<span>{{forecast[0].temp_min | number: '1.0-0'}}º</span></li>
+            <li>max<span>{{forecast[0].temp_max | number: '1.0-0'}}º</span></li>
           </ul>
-          <h2 class="main-temp">{{currentWeather.main.temp | number: '1.0-0'}}º</h2>
+          <h2 class="main-temp">{{forecast[0].temp | number: '1.0-0'}}º</h2>
         </div>
       </div>
       <div class="show-loading" [ngClass]="{'hide-loading': !loading}">
@@ -45,15 +45,15 @@
     </article>
     <article class="weather-container weather-container--white" >
       <div class="weather-content" [ngClass]="{'show-content': !loading}" *ngIf="currentWeather">
-        <div class="weather-date">Now</div>
+        <div class="weather-date">{{forecast[1].date}}</div>
         <div class="weather-place">{{currentWeather.name}}</div>
-        <p class="weather-description">{{currentWeather.weather[0].description}}</p>
+        <p class="weather-description">{{forecast[1].description}}</p>
         <div class="temps">
           <ul class="max-min-temps">
-            <li>min<span>{{currentWeather.main.temp_min}}º</span></li>
-            <li>max<span>{{currentWeather.main.temp_max}}º</span></li>
+            <li>min<span>{{forecast[1].temp_min | number: '1.0-0'}}º</span></li>
+            <li>max<span>{{forecast[1].temp_max | number: '1.0-0'}}º</span></li>
           </ul>
-          <h2 class="main-temp">{{currentWeather.main.temp | number: '1.0-0'}}º</h2>
+          <h2 class="main-temp">{{forecast[1].temp | number: '1.0-0'}}º</h2>
         </div>
       </div >
     </article>
