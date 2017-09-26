@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 
-let mock = false;
+let mock = true;
 
 export default class WeatherCtrl {
   /**
@@ -16,7 +16,7 @@ export default class WeatherCtrl {
   constructor() {
 
     let google = '014732945328213571568:nxikwjlukmk';
-    let credential = 'AIzaSyA45hNDlmuMHhqJ37WyHEnXqm8TO47aVSY';
+    let credential = 'AIzaSyDVaR26wt2QOZ8fuB1wkVrDyZDSf5KE9N4';
 
     this.images = new GoogleImages(google, credential);
 
