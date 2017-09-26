@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 
-let mock = true;
+let mock = false;
 
 export default class WeatherCtrl {
   /**
