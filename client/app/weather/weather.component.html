@@ -1,5 +1,5 @@
 <div class="bg-wrapper">
-  <div class="transparent" [ngClass]="{'blur-bg': !loadingImage}" (onLoad)="showImage($event)" [lazyLoad]="images[0].url" ></div>
+  <div class="fade-in" [ngClass]="{'blur-bg': !loadingImage}" (onLoad)="showImage($event)" [lazyLoad]="images[0].url" ></div>
 </div>
 
 <div class="spinner" [ngClass] = "{'spinner--hide': !loading}">
@@ -15,18 +15,25 @@
 
   <div class="weather">
     <article class="weather-container">
-      <div class="weather-date">Now</div>
-      <div class="weather-place">{{currentWeather.name}}</div>
-      <p class="weather-description">{{currentWeather.weather[0].description}}</p>
 
-      <div class="temps">
-        <ul class="max-min-temps">
-          <li>min<span>{{currentWeather.main.temp_min}}º</span></li>
-          <li>max<span>{{currentWeather.main.temp_max}}º</span></li>
-        </ul>
-        <h2 class="main-temp">{{currentWeather.main.temp | number: '1.0-0'}}º</h2>
+      <div class="weather-content" [ngClass]="{'show-content': !loading}">
+        <div class="weather-date">Now</div>
+        <div class="weather-place">{{currentWeather.name}}</div>
+        <p class="weather-description">{{currentWeather.weather[0].description}}</p>
+        <div class="temps">
+          <ul class="max-min-temps">
+            <li>min<span>{{currentWeather.main.temp_min}}º</span></li>
+            <li>max<span>{{currentWeather.main.temp_max}}º</span></li>
+          </ul>
+          <h2 class="main-temp">{{currentWeather.main.temp | number: '1.0-0'}}º</h2>
+        </div>
       </div>
     </article>
+
+    <div class="show-loading" [ngClass]="{'hide-loading': !loading}">
+      <app-loading></app-loading>
+    </div>
+
   </div>
 
 
