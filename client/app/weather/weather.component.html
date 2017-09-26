@@ -1,5 +1,5 @@
 <div class="bg-wrapper">
-  <div class="fade-in" [ngClass]="{'blur-bg': !loadingImage}" (onLoad)="showImage($event)" [lazyLoad]="images[0].url" ></div>
+  <div class="bg fade-in" [ngClass]="{'blur-bg': !loadingImage}" (onLoad)="showImage($event)" [lazyLoad]="images[0].url" ></div>
 </div>
 
 <div class="spinner" [ngClass] = "{'spinner--hide': !loading}">
@@ -8,7 +8,12 @@
 </div>
 
 
-<h1 class="hero">Weather Cool App</h1>
+<div class="align-center">
+  <form class="search-box" (ngSubmit)="search()">
+    <input  [(ngModel)]="city" name="city" placeholder="City" >
+    <button type="submit" ><span class="fa fa-2x fa-search"></span></button>
+  </form>
+</div>
 
 <div class="content">
   <div class="weather">
@@ -58,10 +63,6 @@
       </div >
     </article>
   </div>
-  <div class="align-center">
-    <form class="search-box" (ngSubmit)="search()">
-      <input  [(ngModel)]="city" name="city" placeholder="City" >
-      <button type="submit" ><span class="fa fa-2x fa-search"></span></button>
-    </form>
-  </div>
 </div>
+
+<h1 class="hero">Weather Cool App</h1>

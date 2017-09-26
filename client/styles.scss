@@ -39,6 +39,7 @@ html {
 }
 
 body {
+  margin: 0;
   font-size:62.5%;
 }
 
@@ -91,7 +92,6 @@ body {
 }
 
 .content {
-  position: relative;
   z-index: 1;
 }
 
@@ -102,30 +102,33 @@ body {
   background: rgba(black, 0.5);
   border: 1px solid rgba(white, 0.5) !important;
   position: relative;
+  z-index: 10;
+  display: inline-block;
 
   input {
-    -webkit-box-shadow: 0 0 0px 0px transparent inset;
-
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-
       color: white !important;
       transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
-
     }
+    width: 100%;
+    box-sizing: border-box;
+    min-width: auto;
+    display: block;
+    -webkit-box-shadow: 0 0 0px 0px transparent inset;
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     overflow: hidden;
     padding: 0.5rem 1rem;
-    border:0px solid transparent !important;
+    padding-right: 3.5rem;
+    border: 0px solid transparent !important;
     background: transparent !important;
     font-size: 1.6rem;
     line-height: 1.6rem;
     color: white;
-    padding-right: 3.5rem;
   }
 
   button {
@@ -153,4 +156,20 @@ body {
 
 .align-center {
   text-align: center;
+}
+
+@media (max-width: 768px) {
+
+
+  .content {
+  //  padding: 1rem;
+    position: static;
+  }
+
+  .search-box {
+    display: block;
+  }
+  .hero {
+    position: static;
+  }
 }

@@ -1,22 +1,18 @@
-<div>
-
-
-  <h1 class="hero">Weather Cool App</h1>
-
-  <div class="content">
-    <div class="align-center">
-      <form class="search-box" (ngSubmit)="search()">
-        <input  [(ngModel)]="city" name="city" placeholder="City" >
-        <button type="submit" ><span class="fa fa-2x fa-search"></span></button>
-      </form>
-    </div>
-  </div>
-
-  <div class="error" *ngIf="error == 'notfound'">
-    <p>No result found.</p>
-  </div>
-
-  <div class="error" *ngIf="error == 'notgeopos'">
-    <p>Couldn't find your geolocation, please make sure to grant access to it</p>
+<div class="content">
+  <div class="align-center">
+    <form class="search-box" (ngSubmit)="search()">
+      <input  [(ngModel)]="city" name="city" placeholder="City" >
+      <button type="submit" ><span class="fa fa-2x fa-search"></span></button>
+    </form>
   </div>
 </div>
+
+<div class="error" *ngIf="error == 'notfound'">
+  <p>No result found.</p>
+</div>
+
+<div class="error" *ngIf="error == 'notgeopos'">
+  <p>Couldn't find your geolocation, please make sure to grant access to it</p>
+</div>
+
+<h1 class="hero">Weather Cool App</h1>
