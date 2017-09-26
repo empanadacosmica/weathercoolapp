@@ -182,7 +182,7 @@ export default class WeatherCtrl {
           res.status(200).json(response);
         } else {
           // search images
-          this.images.search(data.name + ' ' + data.sys.country, {
+          this.images.search(response.weather.name + ' ' + response.weather.sys.country, {
             size: 'large',
             safe: 'high',
           }).then(image => {
@@ -354,7 +354,7 @@ export default class WeatherCtrl {
           res.status(200).json(response);
         } else {
           // search images
-          this.images.search(data.name + ' ' + data.sys.country, {
+          this.images.search(response.weather.name + ' ' + response.weather.sys.country, {
             size: 'large',
             safe: 'high',
           }).then(image => {
