@@ -26,8 +26,9 @@ export class WeatherService {
     let triggered: boolean = false;
 
     //check html5 geolcation compatibilty
-    if ('geolocation' in navigator) {
-      try {
+    try {
+      //try to get current position
+      if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(position => {
           triggered = true;
           success(position.coords);
@@ -35,14 +36,14 @@ export class WeatherService {
           //on error , try google
           tryGoogle(success, error, 0);
         }, {timeout: 5000});
-      } catch(err) {
-        tryGoogle(success, error, 0);
-      }
     } else {
       //google fallback for non html5 browsers
       tryGoogle(success, error, 0);
     }
 
+    } catch(err) {
+      tryGoogle(success, error, 0);
+    }
     //if got timeout, use google
     setTimeout(() => {
       if(!triggered) {
