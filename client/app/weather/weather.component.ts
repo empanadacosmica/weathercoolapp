@@ -32,21 +32,19 @@ export class WeatherComponent {
         self.city = decodeURIComponent(params['city']);
       }
 
-      if(self.city === 'current' && navigator.geolocation) {
+      if(self.city === 'current') {
         self.city = undefined;
         //if it's a current param, use the GEOPOS loc
 
-        if ('geolocation' in navigator) {
+        self.weather.getCoord(position => {
 
-
-          navigator.geolocation.getCurrentPosition(position => {
-            self.weather.getByCoord(position.coords.latitude, position.coords.longitude).subscribe((data) => {
+            self.weather.getByCoord(position.latitude, position.longitude).subscribe((data) => {
               /**
                * Happy path for GEOPOS
                */
               this.getData(data);
               self.location.go( self.city );
-            }, error => {
+            }, () => {
               self.router.navigate(['notfound'], {queryParams: {error: 'notfound'}});
             });
 
@@ -55,11 +53,8 @@ export class WeatherComponent {
               self.router.navigate(['notfound'], {queryParams: {error: 'notgeopos'}});
               console.log('you denied me :-(');
             }
-          },  { maximumAge: 600000, timeout: 10000 });
+          });
 
-        } else {
-          self.router.navigate(['notfound']);
-        }
 
       } else {
 
