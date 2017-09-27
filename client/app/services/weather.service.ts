@@ -27,13 +27,17 @@ export class WeatherService {
 
     //check html5 geolcation compatibilty
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        triggered = true;
-        success(position.coords);
-      }, error => {
-        //on error , try google
+      try {
+        navigator.geolocation.getCurrentPosition(position => {
+          triggered = true;
+          success(position.coords);
+        }, error => {
+          //on error , try google
+          tryGoogle(success, error, 0);
+        }, {timeout: 5000});
+      } catch(err) {
         tryGoogle(success, error, 0);
-      }, {timeout: 5000});
+      }
     } else {
       //google fallback for non html5 browsers
       tryGoogle(success, error, 0);
@@ -44,7 +48,7 @@ export class WeatherService {
       if(!triggered) {
         tryGoogle(success, error, 0);
       }
-    }, 5000);
+    }, 7000);
 
 
     /**
