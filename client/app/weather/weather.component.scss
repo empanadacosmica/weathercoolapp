@@ -9,6 +9,14 @@ $blur-factor: 0.5rem;
   }
 }
 
+@keyframes hide-anim {
+  0% {
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
 @keyframes blur-in {
   0% {
     -webkit-filter: blur(0px);
@@ -52,6 +60,7 @@ $blur-factor: 0.5rem;
 
 .fade-in {
   transition: opacity 2s ease-in-out 0s;
+  animation: 2s ease-out 0s 1 hide-anim;
   opacity: 0;
 }
 
