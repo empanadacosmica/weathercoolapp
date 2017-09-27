@@ -19,7 +19,7 @@ export abstract class AbstractMockObservableService {
 
   subscribe(next: Function, error?: Function, complete?: Function): Subscription {
     this._subscription = new Subscription();
-    spyOn(this._subscription, 'unsubscribe');
+    //spyOn(this._subscription, 'unsubscribe');
 
     if (next && this._fakeContent && !this._fakeError) {
       next(this._fakeContent);
