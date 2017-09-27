@@ -164,6 +164,13 @@ body {
 
 @media (max-width: 768px) {
 
+  .preloader {
+    display: none;
+  }
+
+  body {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
 
   .content {
   //  padding: 1rem;
@@ -174,7 +181,8 @@ body {
     display: block;
   }
   .hero {
-    position: static;
+    position: relative;
+    z-index: 10;
   }
 }
 
