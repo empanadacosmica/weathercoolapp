@@ -1,4 +1,4 @@
-# Weather Cool App
+# Weather Cool App - [Live Demo](https://weathercoolapp.herokuapp.com/)
 Weather Cool App is angular and nodejs responsive application done in typescript. By default, the app will try to gather the client geolocation using HTML5 API, with a Google Sensor fallback.  
 Additionally, the users can search any city from [Openweathermap API](https://openweathermap.org/api) and it will display a related image from the result gather by the Google Search Image API.
 
