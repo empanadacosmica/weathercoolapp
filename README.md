@@ -16,6 +16,9 @@ Additionally, the users can search any city from [Openweathermap API](https://op
 2. Install Angular CLI: `npm i -g @angular/cli`
 3. From project root folder install all the dependencies: `npm i`
 
+## Installation
+Run `npm install`
+
 ## Run
 ### Development mode
 Run `npm run dev`
