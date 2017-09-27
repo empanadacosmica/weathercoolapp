@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Location} from '@angular/common';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 
@@ -12,12 +12,12 @@ import {Location} from '@angular/common';
 })
 export class WeatherComponent {
 
-  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router, private location: Location) {
+  constructor(public weather: WeatherService, public activatedRoute: ActivatedRoute,  public router: Router, public location: Location) {
   }
 
   images: any = [{}, {}, {}];
-  loading: boolean = true;
   loadingImage: boolean = true;
+  loading: boolean = true;
   currentWeather: any;
   forecast: any;
   city: string;
@@ -81,7 +81,7 @@ export class WeatherComponent {
     this.city = this.currentWeather.name;
   }
 
-  showImage (succcess: boolean) {
+  showImage (succcess) {
     if(succcess) {
       this.loadingImage = false;
     }
