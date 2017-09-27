@@ -49,10 +49,8 @@ export class WeatherComponent {
             });
 
           }, error => {
-            if (error.code == error.PERMISSION_DENIED) {
               self.router.navigate(['notfound'], {queryParams: {error: 'notgeopos'}});
               console.log('you denied me :-(');
-            }
           });
 
 
